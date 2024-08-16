@@ -340,5 +340,31 @@ p{
   padding: 20px;
 }
 
-
+/* cart page */
+.cart-item-container{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+}
+.cart-item{
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  border-radius: 10px;
+  background: white;
+  padding: 20px;
+  flex-direction: row;
+  margin: 0  20px;
+}
+.cart-item img{
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
 

@@ -15,7 +15,7 @@ export default function Choice() {
         ...prevState,
         [index]: false,
       }));
-    }, 10000); // Adjust to control how long the card stays flipped
+    }, 20000); // Adjust to control how long the card stays flipped
   };
 
   return (

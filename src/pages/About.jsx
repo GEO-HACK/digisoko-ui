@@ -36,7 +36,7 @@ export default function () {
       <section className="about-section">
         <img src={image} className="image" />
         <div className="about-details">
-        <h2>Our <span>Vission</span></h2>
+        <h2>Our <span>Vision</span></h2>
 
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem sequi
