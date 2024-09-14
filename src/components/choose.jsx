@@ -19,25 +19,25 @@ export default function Choice() {
   };
 
   return (
-    <section className="choices">
-      <h2>
-        Why choose <span>Us</span>?
+    <section className="flex flex-col items-center gap-8 mb-8">
+      <h2 className="text-4xl font-semibold">
+        Why choose <span className="text-green-500">Us</span>?
       </h2>
-      <div className="choices-ctn">
+      <div className="flex flex-row gap-5">
         {choiceData.map((choice, index) => (
           <div
             key={index}
-            className={`choice-card ${flipped[index] ? "flipped" : ""}`}
+            className={`relative w-72 h-48 p-5 bg-white shadow-lg rounded-lg cursor-pointer perspective-1000 transition-transform duration-800 ${flipped[index] ? "rotate-y-180" : ""}`}
             onMouseEnter={() => handleMouseEnter(index)}
           >
-            <div className="card-inner">
-              <div className="card-front">
-                <FaLeaf className="icon" /> {/* Using an icon on the front */}
+            <div className={`absolute w-full h-full transition-transform duration-800 ${flipped[index] ? "rotate-y-180" : ""}`}>
+              <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-gray-200">
+                <FaLeaf className="text-4xl text-green-500" /> {/* Using an icon on the front */}
               </div>
-              <div className="card-back">
-                <div className="card-content">
-                  <h3>{choice.title}</h3>
-                  <p>{choice.description}</p>
+              <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rotate-y-180">
+                <div className="text-center text-gray-800">
+                  <h3 className="text-lg font-semibold">{choice.title}</h3>
+                  <p className="text-sm">{choice.description}</p>
                 </div>
               </div>
             </div>
