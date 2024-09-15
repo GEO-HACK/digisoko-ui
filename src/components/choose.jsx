@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaLeaf } from "react-icons/fa"; // Importing an icon for the card front
+import { FaLeaf } from "react-icons/fa";
 
 export default function Choice() {
   const [flipped, setFlipped] = useState({});
@@ -23,18 +23,23 @@ export default function Choice() {
       <h2 className="text-4xl font-semibold">
         Why choose <span className="text-green-500">Us</span>?
       </h2>
-      <div className="flex flex-row gap-5">
+      <div className="flex justify-center gap-5">
         {choiceData.map((choice, index) => (
           <div
             key={index}
-            className={`relative w-72 h-48 p-5 bg-white shadow-lg rounded-lg cursor-pointer perspective-1000 transition-transform duration-800 ${flipped[index] ? "rotate-y-180" : ""}`}
+            className={`relative w-72 h-48 p-5 bg-white shadow-lg rounded-lg cursor-pointer transition-transform duration-[800ms] perspective-1000 ${
+              flipped[index] ? "transform rotate-y-180" : ""
+            }`}
             onMouseEnter={() => handleMouseEnter(index)}
           >
-            <div className={`absolute w-full h-full transition-transform duration-800 ${flipped[index] ? "rotate-y-180" : ""}`}>
-              <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-gray-200">
-                <FaLeaf className="text-4xl text-green-500" /> {/* Using an icon on the front */}
+            {/* Inner card for front and back */}
+            <div className="w-full h-full transition-transform duration-[800ms] transform-style-3d">
+              {/* Front of the card */}
+              <div className="absolute inset-0 backface-hidden flex items-center justify-center bg-gray-200 ">
+                <FaLeaf className="text-4xl text-green-500" />
               </div>
-              <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rotate-y-180">
+              {/* Back of the card */}
+              <div className="absolute inset-0 backface-hidden flex items-center justify-center bg-white transform rotate-y-180 rounded-md p-10">
                 <div className="text-center text-gray-800">
                   <h3 className="text-lg font-semibold">{choice.title}</h3>
                   <p className="text-sm">{choice.description}</p>
