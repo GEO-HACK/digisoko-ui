@@ -64,52 +64,6 @@ p {
   line-height: 1.5;
 }
 
-.hero-ctn {
-  width: 100%;
-  height: auto;
-  padding: 10px;
-  margin: 50px auto;
-  gap: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.hero-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  margin-left: 100px;
-}
-
-.hero-img {
-  border-radius: 10px;
-  width: 60%;
-  margin: 0 30px;
-}
-
-.img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.hero-btn {
-  padding: 10px;
-  width: 100px;
-  border-radius: 10px;
-  border: 2px solid greenyellow;
-  background-color: #ecfccb;
-  font-weight: bold;
-  font-size: 12px;
-  color: greenyellow;
-}
-
-.hero-btn:hover {
-  background-color: #a3e635;
-  color: black;
-}
-
 .card--ctn {
   margin: 30px auto;
   display: flex;
