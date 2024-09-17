@@ -25,9 +25,9 @@ export default function Home(){
         <Hero/>
         
 
-       <section className='card--ctn'>
-        <h1 className='title'>Products</h1>
-       <div className='cards'>
+       <section className='my-8'>
+        <h1 className='text-3xl font-bold text-center mb-8'>Products</h1>
+       <div className='flex  gap-3 justify-center'>
       
         {limitedProducts.map(product => (
           <Card 
