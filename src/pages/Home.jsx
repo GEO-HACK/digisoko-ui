@@ -36,6 +36,8 @@ export default function Home(){
               description={product.description}
               price={product.price}
 
+              className="w-64 h-80"
+
           />
            
          
