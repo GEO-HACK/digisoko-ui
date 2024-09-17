@@ -19,9 +19,9 @@ export default function Choice() {
   };
 
   return (
-    <section className="flex flex-col items-center gap-8 mb-8">
+    <section className="flex flex-col  items-center gap-8 mb-8">
       <h2 className="text-4xl font-semibold">
-        Why choose <span className="text-green-500">Us</span>?
+        Why choose <span className="text-lime-500">Us</span>?
       </h2>
       <div className="flex justify-center gap-5">
         {choiceData.map((choice, index) => (

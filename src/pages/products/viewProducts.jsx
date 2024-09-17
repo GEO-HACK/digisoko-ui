@@ -34,15 +34,17 @@ export default function Products() {
         )
         :
         (
-            <div className="products">
+            <div className="grid grid-cols-5 gap-x-5 ">
             {products.map((product) => (
-              <Card
+             <div key={product.id} className="mb-4">
+               <Card
                 id={product.id}
                 imageSrc={`http://localhost:8000/${product.image}`}
                 title={product.name}
                 description={product.description}
                 price={product.price}
               />
+             </div>
             ))}
           </div>
         )

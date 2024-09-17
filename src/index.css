@@ -161,11 +161,7 @@ p {
   text-decoration: underline;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Create 5 equal columns */
-  gap: 20px; /* Space between cards */
-}
+
 
 .error-message {
   font-size: 40px;
