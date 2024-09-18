@@ -34,9 +34,10 @@ export default function Products() {
         )
         :
         (
-            <div className="grid grid-cols-5 gap-x-5 ">
+        <div className="flex justify-center items-center">
+              <div className="grid grid-cols-2 gap-x-3  md:grid-cols-5   sm:grid-cols-2 mx-auto">
             {products.map((product) => (
-             <div key={product.id} className="mb-4">
+             <div key={product.id} className="p-2 text-sm">
                <Card
                 id={product.id}
                 imageSrc={`http://localhost:8000/${product.image}`}
@@ -47,6 +48,7 @@ export default function Products() {
              </div>
             ))}
           </div>
+        </div>
         )
     }
 
