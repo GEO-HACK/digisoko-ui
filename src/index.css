@@ -16,38 +16,7 @@ body {
   background-color: #ecfccb;
 }
 
-header {
-  display: flex;
-  background-color: #a3e635;
-  height: 50px;
-  align-items: center;
-  padding-block: 10px;
-}
 
-header .logo {
-  color: black;
-  margin-right: auto;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 25px;
-  font-style: oblique;
-}
-
-header a {
-  text-decoration: none;
-  color: #4d4d4d;
-  font-weight: 600;
-  padding: 5px 20px;
-}
-
-header a:hover {
-  color: #161616;
-}
-
-.title {
-  font-size: 3rem;
-  line-height: 1.2;
-}
 
 h2 {
   font-size: 2.5rem;
