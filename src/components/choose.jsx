@@ -19,15 +19,15 @@ export default function Choice() {
   };
 
   return (
-    <section className="flex flex-col  items-center gap-8 mb-8">
+    <section className="flex flex-col  items-center gap-8 mb-8 px-4">
       <h2 className="text-4xl font-semibold">
         Why choose <span className="text-lime-500">Us</span>?
       </h2>
-      <div className="flex justify-center gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-3">
         {choiceData.map((choice, index) => (
           <div
             key={index}
-            className={`relative w-72 h-48 p-5 bg-white shadow-lg rounded-lg cursor-pointer transition-transform duration-[800ms] perspective-1000 ${
+            className={`relative w-64 h-40 sm:w-72 sm-h-48 p-5 bg-white shadow-lg rounded-lg cursor-pointer transition-transform duration-[800ms] perspective-1000 ${
               flipped[index] ? "transform rotate-y-180" : ""
             }`}
             onMouseEnter={() => handleMouseEnter(index)}

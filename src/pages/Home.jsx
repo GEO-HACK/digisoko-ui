@@ -27,7 +27,7 @@ export default function Home(){
 
        <section className='my-8   '>
         <h1 className='text-3xl font-semibold text-center mb-8'>Products</h1>
-       <div className='flex  gap-5 justify-center'>
+       <div className=' w-4/5  mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-center'>
       
         {limitedProducts.map(product => (
           <Card 
