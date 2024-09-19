@@ -35,7 +35,7 @@ export default function Products() {
         :
         (
         <div className="flex justify-center items-center">
-              <div className="grid grid-cols-2 gap-x-3  md:grid-cols-5   sm:grid-cols-2 mx-auto">
+              <div className="grid grid-cols-1 gap-x-1  md:grid-cols-5   sm:grid-cols-2 mx-auto">
             {products.map((product) => (
              <div key={product.id} className="p-2 text-sm">
                <Card

@@ -13,9 +13,9 @@ export default function  Card({ imageSrc, title, description, price, id}){
   }
 
     return(
-        <div className="card w-100 sm:w-50 h-80 sm:h-auto  mx-3  my-3border border-gray-300 rounded-lg shadow-lg  transition-transform hover:shadow=xl hover:scale-105"id={id} >
+        <div className="card w-64  h-100  mx-3  my-3border border-gray-300 rounded-lg shadow-lg  transition-transform hover:shadow=xl hover:scale-105"id={id} >
         <img src={imageSrc} alt={title} className="w-full h-48 object-cover rounded-tl-md rounded-tr-md" />
-        <div className="p-4 text-center">
+        <div className="p-2 text-center">
           <h2 className="text-xl font-bold mb-2">{title}</h2>
           <p className="text-sm text-gray-600 mb-4">{description}</p>
           <p className="text-lg font-semibold text-gray-900">${price}</p>
