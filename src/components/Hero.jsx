@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import image from "../assets/images/image1.webp";
 
-export default function Hero() {
+export default function Hero() 
+{
+
+  const navigate = useNavigate();
+
+  const handleShopNow = () => {
+    navigate("/products")//redirecting to the products
+  }
   return (
     <section className="w-full py-10 px-5 lg:px-24 flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-20 mx-auto">
       <div className="flex flex-col justify-center gap-4 text-center lg:text-left">
@@ -14,7 +22,10 @@ export default function Hero() {
           Perfect for home cooks and chefs alike, our products are chosen for
           their quality and taste.
         </p>
-        <button className="px-5 py-2 w-32 rounded-lg border-2 border-green-400 bg-[#ecfccb] text-lime-500 font-bold text-sm hover:bg-lime-400 hover:text-black transition duration-300">
+        <button
+        onClick={handleShopNow}
+        
+        className="px-5 py-2 w-32 rounded-lg border-2 border-green-400 bg-[#ecfccb] text-lime-500 font-bold text-sm hover:bg-lime-400 hover:text-black transition duration-300">
           Shop Now
         </button>
       </div>
