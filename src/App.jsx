@@ -36,6 +36,8 @@ const router = createBrowserRouter(
 
 
 export default function App(){
+
+  
   return(
     <CartProvider>
       <RouterProvider router={router}/>
