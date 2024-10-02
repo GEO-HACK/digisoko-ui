@@ -3,6 +3,8 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from 'react-icons/md';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../../firebase"; // Import firebase configurations
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginRegister = () => {
     const [isRegistering, setIsRegistering] = useState(false);
@@ -10,6 +12,7 @@ const LoginRegister = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(''); // State to hold success/failure messages
+    const navigate = useNavigate();
   
     const handleRegisterClick = () => {
       setIsRegistering(true);
@@ -28,6 +31,8 @@ const LoginRegister = () => {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           setMessage('Registration successful!');
+
+          navigate('/')
         })
         .catch((error) => {
           setMessage(`Registration error: ${error.message}`);
@@ -41,6 +46,7 @@ const LoginRegister = () => {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           setMessage('Login successful! Welcome back.');
+          navigate('/')
         })
         .catch((error) => {
           setMessage(`Login error: ${error.message}`);

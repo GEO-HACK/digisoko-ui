@@ -1,17 +1,29 @@
 import React,{ useState} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa'
+import { useAuth } from '../context/AuthContext'
 
 export default function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false)
+    
+    const { logout } = useAuth();//access to the logout function
 
     const handleToggleDropdown = () => {
         setDropdownOpen(!dropdownOpen)
     };
-    const handleLogout = () => {
-        console.log('logged out of the site')
-        setDropdownOpen(false)
-    }
+    const handleLogout = async () => {
+        try {
+            await logout(); //calling the logout function
+            console.log('logged out of the site');
+
+        }catch (error) {
+            console.error('Error logging out:', error);
+
+        }finally {
+            setDropdownOpen(false); //close dropdown after logout
+        }
+       
+    };
   return (
     <header className='flex items-center justify-between bg-lime-300 h-15 py-5 px-4'>
       <Link className='text-black text-2xl font-extrabold uppercase italic' to='/'>
