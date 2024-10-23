@@ -40,7 +40,7 @@ export default function Products() {
              <div key={product.id} className="p-2 text-sm">
                <Card
                 id={product.id}
-                imageSrc={`http://localhost:8000/${product.image}`}
+                imageSrc={`http://127.0.0.1:8000/${product.image}`}
                 title={product.name}
                 description={product.description}
                 price={product.price}

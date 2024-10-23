@@ -25,7 +25,7 @@ export default function Navbar() {
        
     };
   return (
-    <header className='flex items-center justify-between bg-lime-300 h-15 py-5 px-4'>
+    <header className='flex items-center justify-between bg-lime-300 h-13 py-5 px-4'>
       <Link className='text-black text-2xl font-extrabold uppercase italic' to='/'>
         DigiSoko
       </Link>
