@@ -1,5 +1,4 @@
 import React from "react";
-import image from "../assets/images/image3.avif";
 
 export default function About() {
   return (

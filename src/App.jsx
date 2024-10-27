@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Products from "./pages/products/viewProducts";
 import AddProducts from "./pages/products/AddProducts";
 import ProductLayout from "./components/productLayout";
+import ProductDescription from "./pages/products/productDescription";
 import Cart from "./pages/products/cart";
 import About from "./pages/About";
 import LoginRegister from "./components/Authentication/LoginRegistration";
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
       >
         <Route index element={<Products />} />
         <Route path="AddProduct" element={<AddProducts />} />
+        <Route path="details/:id" element={<ProductDescription/>}/>
         <Route path="cart" element={<Cart />} />
       </Route>
     </Route>

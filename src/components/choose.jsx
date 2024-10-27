@@ -19,21 +19,21 @@ export default function Choice() {
   };
 
   return (
-    <section className="flex flex-col  items-center gap-8 mb-8 px-4">
-      <h2 className="text-4xl font-semibold">
+    <section className=" bg-lime-200 mx-1 rounded-lg h-screen flex flex-col  items-center gap-8 mb-8 px-4">
+      <h2 className="mt-20 text-4xl font-semibold">
         Why choose <span className="text-lime-500">Us</span>?
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-3">
         {choiceData.map((choice, index) => (
           <div
             key={index}
-            className={`relative w-64 h-40 sm:w-72 sm-h-48 p-5 bg-white shadow-lg rounded-lg cursor-pointer transition-transform duration-[800ms] perspective-1000 ${
+            className={`relative w-64 h-40 sm:w-72 sm-h-48 p-5 bg-white shadow-lg rounded-lg4= cursor-pointer transition-transform duration-[800ms] perspective-1000 ${
               flipped[index] ? "transform rotate-y-180" : ""
             }`}
             onMouseEnter={() => handleMouseEnter(index)}
           >
             {/* Inner card for front and back */}
-            <div className="w-full h-full transition-transform duration-[800ms] transform-style-3d">
+            <div className="w-full h-1/2 transition-transform duration-[800ms] transform-style-3d">
               {/* Front of the card */}
               <div className="absolute inset-0 backface-hidden flex items-center justify-center bg-gray-200 ">
                 <FaLeaf className="text-4xl text-green-500" />

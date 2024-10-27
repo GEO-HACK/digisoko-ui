@@ -2,7 +2,7 @@ import React from "react";
 import { easeIn, easeInOut, motion } from "framer-motion";
 import image1 from "../assets/images/veg.png";
 import image2 from "../assets/images/spice.png";
-// import image3 from "../assets/images/spice.avif";
+import image3 from "../assets/images/fruit.png";
 
 import { section } from "framer-motion/client";
 
@@ -23,7 +23,7 @@ const servicesData = [
   },
   {
     id: 1,
-    image: image1,
+    image: image3,
     title: "Fruits",
     subtitle:
       " Lorem ipsum, dolor sit amet consectetur. Nihil temporibus at totam qu ",
@@ -104,7 +104,7 @@ const HomeProd = () => {
                 <motion.div
                 variants={cardVariants}
                 className="text-center p-4 space-y-6">
-                    <img src={service.image} alt="" className="img-shadow2 max-w-[200px] mx-auto hover:scale-110 duration-300 cursor-pointer" />
+                    <img src={service.image} alt="" className="w-48 h-48 object-cover mx-auto rounded-lg  hover:scale-110 transition-transform duration-300 cursor-pointer" />
                     <div className="space-y-2">
                         <h1 className="text-2xl font-bold text-lime-400">{service.title}</h1>
                         <p className="text-gray-500">{service.subtitle}</p>
