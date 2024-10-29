@@ -1,13 +1,16 @@
 import React,{ useState} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa'
-import { useAuth } from '../context/AuthContext'
 import { BsCart4 } from "react-icons/bs";
+
+
+import { useCart} from '../context/cartContext'
+import { useAuth } from '../context/AuthContext'
 
 export default function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false)
-    
     const { logout } = useAuth();//access to the logout function
+    const { cart } = useCart()//access to cart state
 
     const handleToggleDropdown = () => {
         setDropdownOpen(!dropdownOpen)
@@ -50,12 +53,19 @@ export default function Navbar() {
         >
           About
         </NavLink>
+        {/* cart icon with counter */}
         <NavLink
         to='/products/cart'
-        className="px-3"
+        className="relative px-3 "
         
         >
           <BsCart4  className='text-2xl text-gray-700'/>
+          {cart.length > 0 && (
+          <span className='absolute -top-2 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center'>
+          {cart.length}
+          
+          </span>
+          )}
 
         </NavLink>
       </nav>
