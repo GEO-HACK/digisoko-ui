@@ -2,6 +2,7 @@ import React,{ useState} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa'
 import { useAuth } from '../context/AuthContext'
+import { BsCart4 } from "react-icons/bs";
 
 export default function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -33,21 +34,29 @@ export default function Navbar() {
       <nav className='flex-grow flex justify-center'>
         <NavLink 
           to='/'
-          className="text-gray-700 font-semibold px-4 hover:text-black"
+          className="text-gray-700 font-semibold px-4 hover:text-black hover:underline"
         >
           Home
         </NavLink>
         <NavLink 
           to='/products'
-          className="text-gray-700 font-semibold px-4 hover:text-black"
+          className="text-gray-700 font-semibold px-4 hover:text-black hover:underline"
         >
           Products
         </NavLink>
         <NavLink 
           to='/about'
-          className="text-gray-700 font-semibold px-4 hover:text-black"
+          className="text-gray-700 font-semibold px-4 hover:text-black hover:underline"
         >
           About
+        </NavLink>
+        <NavLink
+        to='/products/cart'
+        className="px-3"
+        
+        >
+          <BsCart4  className='text-2xl text-gray-700'/>
+
         </NavLink>
       </nav>
       <div className='relative'>

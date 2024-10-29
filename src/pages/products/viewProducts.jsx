@@ -21,9 +21,9 @@ export default function Products() {
   }, []);
   return (
     <>
-      <nav className="product-nav">
-        <NavLink to="cart"> view cart</NavLink>
-        <NavLink to="AddProduct"> Add Products</NavLink>
+      <nav className="text-sm flex flex-row gap-2 p-2  ">
+        <NavLink to="cart" className="text-blue-500 hover:underline"> view cart</NavLink>
+        <NavLink to="AddProduct" className="text-blue-500 hover:underline"> Add Products</NavLink>
       </nav>
 
       <div className="cont">
@@ -34,8 +34,8 @@ export default function Products() {
         )
         :
         (
-        <div className="flex justify-center items-center">
-              <div className="grid grid-cols-1 gap-x-1  md:grid-cols-5   sm:grid-cols-2 mx-auto">
+        <div className="flex  items-start justify-start">
+              <div className="grid grid-cols-1 gap-x-1  md:grid-cols-7   sm:grid-cols-2 mx-auto">
             {products.map((product) => (
              <div key={product.id} className="p-2 text-sm">
                <Card

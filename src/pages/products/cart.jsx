@@ -11,7 +11,8 @@ export default function Cart() {
 
   return (
     <div className="cart">
-      <Link to="..">
+      <Link to=".."
+      className="text-blue-500 text-sm hover:underline">
         &larr;<span>Back to all products</span>
       </Link>
       <h2 className="text-2xl font-semibold my-4">Cart</h2>
