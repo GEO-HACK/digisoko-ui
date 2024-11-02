@@ -8,9 +8,9 @@ import { Outlet } from "react-router-dom";
 export default function Layout({ children }) {
   return (
     <div className="layout">
-      <cartProvider>
+      <CartProvider>
         <Navbar />
-      </cartProvider>
+      </CartProvider>
 
       <main>
         <Outlet />

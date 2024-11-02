@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from 'react-icons/md';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from "../../firebase"; // Import firebase configurations
+import { auth } from "../../firebase/firebase"; // Import firebase configurations
 import { useNavigate } from 'react-router-dom';
 
 

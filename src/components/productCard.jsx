@@ -1,12 +1,18 @@
 import React from "react";
 import { useCart } from "../context/cartContext";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Card({ imageSrc, title, description, price, id }) {
   const { addToCart } = useCart();
 
   const handleItem = () => {
-    const product = { imageSrc, title, price };
+    const product = {
+      id,
+      imageSrc,
+      title,
+      price,
+      quantity: 1,
+    };
     addToCart(product);
   };
 
@@ -22,11 +28,11 @@ export default function Card({ imageSrc, title, description, price, id }) {
       />
       <div className="px-2 py-1 text-left flex flex-col justify-start gap-1 ">
         <h2 className="text-md font-bold ">{title}</h2>
-        
-        <Link 
-        to={`details/${id}`}
-        className="text-sm text-gray-600 truncate"
-        > {description}</Link>
+
+        <Link to={`details/${id}`} className="text-sm text-gray-600 truncate">
+          {" "}
+          {description}
+        </Link>
         <p className="text-md font-semibold text-gray-900 ">${price}</p>
       </div>
       <button
