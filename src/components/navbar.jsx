@@ -68,6 +68,13 @@ export default function Navbar() {
           )}
 
         </NavLink>
+        <input 
+        type="text" 
+        placeholder='search products...'
+        // value={searchQuery}
+        // onChange={handleSearchChange}
+        className='border border-gray-700 rounded focus:border-lime-300 text-gray-700 text-sm bg-lime-300 p-1 ml-20'
+        />
       </nav>
       <div className='relative'>
         <button 
