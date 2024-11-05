@@ -6,7 +6,7 @@ export default function About() {
       {/* Section 1 */}
       <section className="bg-white flex flex-col lg:flex-row justify-center items-center gap-8 p-6 shadow-lg rounded-lg mb-10 w-full max-w-5xl">
         <img
-          src={image}
+        
           className="w-full lg:w-1/2 rounded-lg object-cover"
           alt="About"
         />
@@ -20,7 +20,7 @@ export default function About() {
       {/* Section 2 (Reverse) */}
       <section className="bg-white flex flex-col lg:flex-row-reverse justify-center items-center gap-8 p-6 shadow-lg rounded-lg mb-10 w-full max-w-5xl">
         <img
-          src={image}
+        
           className="w-full lg:w-1/2 rounded-lg object-cover"
           alt="Our Mission"
         />
@@ -41,7 +41,7 @@ export default function About() {
       {/* Section 3 */}
       <section className="bg-white flex flex-col lg:flex-row justify-center items-center gap-8 p-6 shadow-lg rounded-lg mb-10 w-full max-w-5xl">
         <img
-          src={image}
+          
           className="w-full lg:w-1/2 rounded-lg object-cover"
           alt="Our Vision"
         />
