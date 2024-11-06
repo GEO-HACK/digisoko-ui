@@ -51,7 +51,7 @@ const ProductDescription = () => {
             <h1 className="text-4xl font-bold text-gray-800 mb-2">
               {product.name}
             </h1>
-            <p className="text-lg text-blue-600 mb-4">{product.description}</p>
+            <p className="text-lg text-violet-800 mb-4">{product.description}</p>
             <p className="text-xl font-semibold text-gray-900 mb-5">
               ${product.price}
             </p>

@@ -18,7 +18,7 @@ export default function Card({ imageSrc, title, description, price, id }) {
 
   return (
     <div
-      className="card w-[150px] bg-lime-200 h-[280px]  mx-3  my-3 border border-gray-300 rounded-lg shadow-lg  "
+      className="card w-[150px] bg-lime-200 h-[280px]  mx-2  my-2 border border-gray-300 rounded-lg shadow-lg  "
       id={id}
     >
       <img
@@ -29,7 +29,7 @@ export default function Card({ imageSrc, title, description, price, id }) {
       <div className="px-2 py-1 text-left flex flex-col justify-start gap-1 ">
         <h2 className="text-md font-bold ">{title}</h2>
 
-        <Link to={`details/${id}`} className="text-sm text-blue-600 truncate">
+        <Link to={`details/${id}`} className="text-sm text-violet-800 truncate">
           {" "}
           {description}
         </Link>
@@ -37,7 +37,7 @@ export default function Card({ imageSrc, title, description, price, id }) {
       </div>
       <button
         className="bg-blue-500 text-white text-xs px-2 py-2 mx-2 my-3 rounded-md transition-transform 
-             hover:bg-blue-400 hover:scale-105 active:bg-blue-600"
+             hover:bg-blue-400 hover:scale-105 active:bg-violet-800"
         onClick={handleItem}
       >
         AddToCart
