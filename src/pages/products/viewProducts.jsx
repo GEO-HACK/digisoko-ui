@@ -24,7 +24,7 @@ export default function Products() {
         setCategories(data.categories);
         setProducts(data.products); // Initial load without filtering
       })
-      
+
       .catch((error) => {
         setError("Failed to fetch data. Please try again later.");
       });
@@ -49,6 +49,11 @@ export default function Products() {
     setSelectedCategory(category);
     fetchProductsByCategory(category);
   };
+  const applyFilter = () => {
+    if (onFilter){
+      onFilter(selectedCategory)
+    }
+  }
 
   return (
     <>
@@ -66,13 +71,19 @@ export default function Products() {
           <div className="error-message">{error}</div>
         ) : (
           <>
-            <div className="filter-bar p-2">
-              <label htmlFor="category" className="mr-2">Filter by Category:</label>
+            <div className="filter-bar p-2 flex items-center space-x-2">
+              <label
+                htmlFor="category"
+                className="mr-2 font-semibold text-gray-700"
+              >
+                Filter by Category:
+              </label>
+
               <select
                 id="category"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className="border rounded p-1"
+                className="border rounded p-1 focus:outline-none focus:border-blue-500 transition duration-150"
               >
                 <option value="">All</option>
                 {categories.map((category) => (
@@ -81,7 +92,15 @@ export default function Products() {
                   </option>
                 ))}
               </select>
+
+              <button
+                onClick={applyFilter}
+                className="bg-blue-500 text-white rounded px-3 py-1 hover:bg-blue-600 transition duration-150"
+              >
+                Filter
+              </button>
             </div>
+
             <motion.div
               initial="initial"
               animate="animate"

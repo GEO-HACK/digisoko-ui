@@ -30,26 +30,26 @@ export default function Navbar() {
     };
   return (
     <header className='flex items-center justify-between bg-lime-300 h-13 py-5 px-4'>
-      <Link className='text-black text-2xl font-extrabold uppercase italic' to='/'>
+      <Link className='text-violet-700 text-2xl font-extrabold uppercase italic' to='/'>
         DigiSoko
       </Link>
 
       <nav className='flex-grow flex justify-center'>
         <NavLink 
           to='/'
-          className="text-gray-700 font-semibold px-4 hover:text-black hover:underline"
+          className="text-violet-700 font-semibold px-4 hover:text-black hover:underline"
         >
           Home
         </NavLink>
         <NavLink 
           to='/products'
-          className="text-gray-700 font-semibold px-4 hover:text-black hover:underline"
+          className="text-violet-700 font-semibold px-4 hover:text-black hover:underline"
         >
           Products
         </NavLink>
         <NavLink 
           to='/about'
-          className="text-gray-700 font-semibold px-4 hover:text-black hover:underline"
+          className="text-violet-700 font-semibold px-4 hover:text-black hover:underline"
         >
           About
         </NavLink>

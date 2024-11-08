@@ -27,7 +27,7 @@ export default function About() {
             Explore the marketplace with our immersive experience
           </p>
         <button
-        className="bg-lime-200 py-4 px-5 text-violet-500  rounded-xl"
+        className="bg-lime-500 py-4 px-5 text-violet-500  rounded-xl"
         >view products</button>
         </div>
       </div>

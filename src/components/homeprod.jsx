@@ -67,7 +67,7 @@ const HomeProd = () => {
               damping: 10,
               delay: 0.2,
             }}
-            className=" text-3xl font-bold text-black"
+            className=" text-3xl font-bold text-violet-700"
           >
             Fresh Produce &{" "}
             <span className="text-lime-400">Aromatic spices</span>
