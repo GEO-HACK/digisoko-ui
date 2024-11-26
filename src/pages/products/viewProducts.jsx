@@ -51,7 +51,7 @@ export default function Products() {
   };
   const applyFilter = () => {
     if (onFilter){
-      onFilter(selectedCategory)
+      onFilter(handleCategoryChange)
     }
   }
 

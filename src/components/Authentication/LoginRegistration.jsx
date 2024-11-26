@@ -16,7 +16,7 @@ const LoginRegister = () => {
   
     const handleRegisterClick = () => {
       setIsRegistering(true);
-      setMessage(''); // Clear any existing messages
+      setMessage(''); // Clear any existing messagesa
     };
   
     const handleLoginClick = () => {
@@ -54,8 +54,8 @@ const LoginRegister = () => {
     };
   
     return (
-      <div className="relative w-full h-screen bg-cover bg-center flex justify-center items-center" style={{ backgroundImage: 'url(./assets/bg.jpeg)' }}>
-        <div className="relative bg-white rounded-lg shadow-lg overflow-hidden"> {/* Change to light background */}
+      <div className=" w-full h-screen bg-cover bg-center flex justify-center items-center"  >
+        <div className="  bg-white rounded-lg shadow-lg overflow-hidden"> {/* Change to light background */}
           <div className="bg-white p-10"> {/* Change to light background */}
             <div className="flex flex-col justify-center items-center">
               {/* Show success or failure message */}

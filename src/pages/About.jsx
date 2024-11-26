@@ -3,34 +3,21 @@ import { FiTarget, FiTrendingUp } from "react-icons/fi"; // Importing icons
 import videoBg from "../assets/video.mp4";
 import mission from "../assets/images/mission.avif";
 import vision from "../assets/images/vision.jpg";
+import { useNavigate } from "react-router-dom";
 import { motion } from 'framer-motion'
 
 export default function About() {
+  const navigate = useNavigate()
+
+  const handleShopNow = () =>{
+    navigate("/products")
+
+  }
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
       {/* Hero Section with Video Background */}
-      <div className="w-full h-screen relative flex items-center justify-center">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src={videoBg}
-          autoPlay
-          loop
-          muted
-        />
-        <div className="absolute inset-0 bg-black opacity-30"></div>
-
-        <div className="relative z-10 text-center text-white p-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Welcome to Digisoko
-          </h1>
-          <p className="text-lg md:text-xl max-w-md mx-auto">
-            Explore the marketplace with our immersive experience
-          </p>
-        <button
-        className="bg-lime-500 py-4 px-5 text-violet-500  rounded-xl"
-        >view products</button>
-        </div>
-      </div>
+     
 
       {/* Mission Section */}
       <section className="flex flex-col lg:flex-row justify-center items-center gap-8 p-6 bg-gradient-to-r from-lime-50 to-white shadow-lg rounded-lg mb-10 w-full max-w-5xl border-l-4 border-lime-500 my-10">
