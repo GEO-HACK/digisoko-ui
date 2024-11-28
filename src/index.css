@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Styling the container */
+.dropdown_container {
+    width: 250px; /* Set a fixed width for the container */
+    border: 2px solid #ccc; /* Border around the container */
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling the select box inside the container */
+  .dropdown_select {
+    width: 10%;
+    padding: 8px;
+    font-size: 16px;
+    border: none; /* Remove default border */
+    background-color: white;
+    border-radius: 5px;
+    appearance: none; /* Remove default dropdown arrow */
+  }
+  
+  /* Styling the options */
+  .option_class {
+    background-color: #f9f9f9;
+    padding: 5px;
+  }
+  
+  .option-class:hover {
+    background-color: #eaeaea;
+  }
+  

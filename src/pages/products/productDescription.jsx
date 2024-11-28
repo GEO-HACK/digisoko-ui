@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useCart } from "../../context/cartContext";
 
 const ProductDescription = () => {
-  const { id } = useParams(); // Get the product ID from the URL
+  const { id } = useParams(); // Get product ID from URL
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -23,6 +23,12 @@ const ProductDescription = () => {
     addToCart(productToCart);
   };
 
+  const viewDetails = () => {
+
+    navigate(`details/${id}`)
+
+  }
+
   const fetchProductDetails = async () => {
     try {
       const response = await fetch(`http://127.0.0.1:8000/products/${id}`);
@@ -30,12 +36,12 @@ const ProductDescription = () => {
       setProduct(data);
 
       // Fetch related products based on the product's category
-      if (data.category) {
+      if (data.Type?.name) {
         const relatedResponse = await fetch(
-          `http://127.0.0.1:8000/products?category_name=${data.category}`
+          `http://127.0.0.1:8000/products/related/${data.Type.name}`
         );
         const relatedData = await relatedResponse.json();
-        setRelatedProducts(relatedData.products);
+        setRelatedProducts(relatedData);
       }
     } catch (error) {
       console.error("Failed to fetch product details:", error);
@@ -159,7 +165,7 @@ const ProductDescription = () => {
                 <h3 className="text-lg font-semibold mt-2">{related.name}</h3>
                 <p className="text-gray-600">${related.price.toFixed(2)}</p>
                 <button
-                  onClick={() => navigate(`/products/${related.id}`)}
+                  onClick={() => viewDetails()}
                   className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mt-2 block w-full text-center"
                 >
                   View Details

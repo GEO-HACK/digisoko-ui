@@ -76,29 +76,29 @@ export default function Products() {
                 htmlFor="category"
                 className="mr-2 font-semibold text-gray-700"
               >
-                Filter by Category:
+                Category:
               </label>
 
               <select
                 id="category"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className="border rounded p-1 focus:outline-none focus:border-blue-500 transition duration-150"
+                className="border rounded-lg p-1 focus:outline-none bg-white focus:border-blue-500 transition duration-150"
               >
-                <option value="">All</option>
+                <option className="rounded-full" value="">All</option>
                 {categories.map((category) => (
-                  <option key={category.id} value={category.name}>
+                  <option className="rounded-full" key={category.id} value={category.name}>
                     {category.name}
                   </option>
                 ))}
               </select>
 
-              <button
+              {/* <button
                 onClick={applyFilter}
                 className="bg-blue-500 text-white rounded px-3 py-1 hover:bg-blue-600 transition duration-150"
               >
                 Filter
-              </button>
+              </button> */}
             </div>
 
             <motion.div
