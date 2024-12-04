@@ -4,41 +4,27 @@ import { motion } from "framer-motion";
 import { useCart } from "../../context/cartContext";
 
 const ProductDescription = () => {
-  const { id } = useParams(); // Get product ID from URL
-  const navigate = useNavigate();
+  const { id } = useParams(); // Extract product ID from the URL
+  const navigate = useNavigate(); // To navigate between pages
+  const { addToCart } = useCart(); // Access cart context
   const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(1);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState(1);
 
-  const handleAddToCart = () => {
-    const productToCart = {
-      id: product.id,
-      imageSrc: `http://127.0.0.1:8000/${product.image}`,
-      title: product.name,
-      price: product.price,
-      quantity,
-    };
-    addToCart(productToCart);
-  };
+  const API_BASE_URL = "http://127.0.0.1:8000/products"; // Base URL for API calls
 
-  const viewDetails = () => {
-
-    navigate(`details/${id}`)
-
-  }
-
+  // Fetch product details
   const fetchProductDetails = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/products/${id}`);
+      const response = await fetch(`${API_BASE_URL}/${id}`);
       const data = await response.json();
       setProduct(data);
 
       // Fetch related products based on the product's category
       if (data.Type?.name) {
         const relatedResponse = await fetch(
-          `http://127.0.0.1:8000/products/related/${data.Type.name}`
+          `${API_BASE_URL}/related/${data.Type.name}`
         );
         const relatedData = await relatedResponse.json();
         setRelatedProducts(relatedData);
@@ -50,10 +36,26 @@ const ProductDescription = () => {
     }
   };
 
+  // Add product to the cart
+  const handleAddToCart = () => {
+    if (quantity > 0) {
+      addToCart({ ...product, quantity });
+    } else {
+      alert("Please select a valid quantity!");
+    }
+  };
+
+  // Navigate to product details page
+  const viewDetails = (relatedId) => {
+    navigate(`/details/${relatedId}`);
+  };
+
+  // Fetch product details on component load or when `id` changes
   useEffect(() => {
     fetchProductDetails();
   }, [id]);
 
+  // Loading spinner
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -62,12 +64,11 @@ const ProductDescription = () => {
     );
   }
 
+  // Error message if no product is loaded
   if (!product) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-red-500">
-          Failed to load product. Please try again.
-        </p>
+        <p className="text-red-500">Failed to load product. Please try again.</p>
       </div>
     );
   }
@@ -135,7 +136,7 @@ const ProductDescription = () => {
             <div>
               <h3 className="text-lg font-semibold text-gray-700">Details</h3>
               <ul className="list-disc list-inside text-gray-600">
-                <li>Type: {product.type || "N/A"}</li>
+                <li>Type: {product.Type?.name || "N/A"}</li>
                 <li>Origin: {product.origin || "N/A"}</li>
                 <li>Freshness: {product.freshness || "Freshly harvested"}</li>
                 {product.nutritionalValue && (
@@ -165,7 +166,7 @@ const ProductDescription = () => {
                 <h3 className="text-lg font-semibold mt-2">{related.name}</h3>
                 <p className="text-gray-600">${related.price.toFixed(2)}</p>
                 <button
-                  onClick={() => viewDetails()}
+                  onClick={() => viewDetails(related.id)}
                   className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mt-2 block w-full text-center"
                 >
                   View Details

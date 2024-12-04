@@ -82,37 +82,41 @@ const HomeProd = () => {
               damping: 10,
               delay: 0.2, //added delay for the firat time
             }}
-            className="text-sm opacity-50 "
+            className="text-sm font-semibold text-gray-700 opacity-50 "
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-            voluptas quas nihil, qui odio nam unde, nostrum natus fugit autem
-            minima illum? Illum velit sunt tempore adipisci quisquam deserunt
-            saepe!
+            Fresh, vibrant produce and aromatic spices enhance every dish,
+            adding rich flavors and scents. From basil to cumin, they bring
+            balance and warmth, elevating meals with the earth's natural
+            abundance.
           </motion.p>
         </div>
         {/* card section */}
         <motion.div
-         variants={containerVariants}
-         initial="hidden"
-         whileInView={"visible"}
-         viewport={{amount:0.8}}
-
-         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-
-         
-            {servicesData.map((service) => (
-                <motion.div
-                variants={cardVariants}
-                className="text-center p-4 space-y-6">
-                    <img src={service.image} alt="" className="w-48 h-48 object-cover mx-auto rounded-lg  hover:scale-110 transition-transform duration-300 cursor-pointer" />
-                    <div className="space-y-2">
-                        <h1 className="text-2xl font-bold text-lime-400">{service.title}</h1>
-                        <p className="text-gray-500">{service.subtitle}</p>
-
-                    </div>
-                    </motion.div>
-            ))}
-         </motion.div>
+          variants={containerVariants}
+          initial="hidden"
+          whileInView={"visible"}
+          viewport={{ amount: 0.8 }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+        >
+          {servicesData.map((service) => (
+            <motion.div
+              variants={cardVariants}
+              className="text-center p-4 space-y-6"
+            >
+              <img
+                src={service.image}
+                alt=""
+                className="w-48 h-48 object-cover mx-auto rounded-lg  hover:scale-110 transition-transform duration-300 cursor-pointer"
+              />
+              <div className="space-y-2">
+                <h1 className="text-2xl font-bold text-lime-400">
+                  {service.title}
+                </h1>
+                <p className="text-gray-500">{service.subtitle}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
