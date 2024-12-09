@@ -27,7 +27,12 @@ const ProductDescription = () => {
           `${API_BASE_URL}/related/${data.Type.name}`
         );
         const relatedData = await relatedResponse.json();
-        setRelatedProducts(relatedData);
+        
+        // Filter out the current product from the related products list
+        const filteredRelatedProducts = relatedData.filter(
+          (relatedProduct) => relatedProduct.id !== id
+        );
+        setRelatedProducts(filteredRelatedProducts);//update the related products to be the items that have been filtered
       }
     } catch (error) {
       console.error("Failed to fetch product details:", error);
@@ -47,12 +52,13 @@ const ProductDescription = () => {
 
   // Navigate to product details page
   const viewDetails = (relatedId) => {
-    navigate(`/details/${relatedId}`);
+    navigate(`/products/details/${relatedId}`);
   };
 
   // Fetch product details on component load or when `id` changes
   useEffect(() => {
     fetchProductDetails();
+    window.scrollTo(0, 0); // Scroll to the top of the page when product changes
   }, [id]);
 
   // Loading spinner

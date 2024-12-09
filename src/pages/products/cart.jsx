@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../context/cartContext";
 import { Link } from "react-router-dom";
-import { BsTrash } from 'react-icons/bs';
-import { fetchCartItems } from '../../firebase/firebaseFunctions'; // Ensure this import matches your file structure
-import { useAuth } from '../../context/AuthContext'; // Assuming you have an Auth context
+import { BsTrash } from "react-icons/bs";
+import { fetchCartItems, deleteCartItem } from "../../firebase/firebaseFunctions";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Cart() {
   const { cart, setCart } = useCart(); // Ensure you can set cart state
@@ -13,8 +13,13 @@ export default function Cart() {
   // Function to fetch cart items from Firestore
   const loadCartItems = async () => {
     if (currentUser) {
-      const items = await fetchCartItems(currentUser.uid); // Assuming fetchCartItems accepts user ID
-      setCart(items); // Update the cart state with fetched items
+      try {
+        const items = await fetchCartItems(currentUser.uid); // Fetch items from Firestore
+        console.log("Fetched items:", items);
+        setCart(items); // Update cart state
+      } catch (error) {
+        console.error("Error loading cart items:", error);
+      }
     }
   };
 
@@ -22,22 +27,38 @@ export default function Cart() {
     loadCartItems(); // Fetch cart items when component mounts
   }, [currentUser]); // Only re-fetch if currentUser changes
 
+  // Delete an item from the cart
+  const handleDeleteCartItem = async (indexToRemove, itemId) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      const updatedCart = cart.filter((_, index) => index !== indexToRemove);
+      setCart(updatedCart);
+
+      try {
+        await deleteCartItem(currentUser.uid, itemId); // Delete item in Firestore
+        console.log(`Item with ID ${itemId} deleted successfully.`);
+      } catch (error) {
+        console.error("Error deleting item from cart:", error);
+        alert("Failed to delete the item. Please try again.");
+      }
+    }
+  };
+
   // Calculate total price
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
   return (
     <div className="cart">
       <Link to=".." className="text-blue-500 text-sm hover:underline">
-        &larr;<span>Back to all products</span>
+        &larr; <span>Back to all products</span>
       </Link>
       <h2 className="text-2xl font-semibold my-4">Cart</h2>
-      
+
       {cart.length === 0 ? (
         <p>No items in the cart</p>
       ) : (
         <>
           {cart.map((item, index) => (
-            <div key={index} className="flex flex-col gap-2 p-4 items-center mx-auto">
+            <div key={item.id} className="flex flex-col gap-2 p-4 items-center mx-auto">
               <div className="flex justify-start items-center gap-5 w-4/5 bg-white rounded-lg p-5 shadow-md">
                 <img
                   src={item.imageSrc}
@@ -45,11 +66,13 @@ export default function Cart() {
                   className="w-24 h-auto rounded-md"
                 />
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <h3 className="text-lg font-semibold">{item.itemName}</h3>
                   <p className="text-gray-700">${item.price}</p>
                 </div>
-                <div className="">
-                  <BsTrash/>
+                <div>
+                  <button onClick={() => handleDeleteCartItem(index, item.id)}>
+                    <BsTrash className="text-red-500 hover:scale-110 transition-transform" />
+                  </button>
                 </div>
               </div>
             </div>

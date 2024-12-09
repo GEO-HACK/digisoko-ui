@@ -36,3 +36,13 @@ export const fetchCartItems = async(userId) => {
     }
     return cartItems;
 }
+
+export const deleteCartItem = async (userId, itemId) => {
+    try {
+      const itemDocRef = doc(db, "users", userId, "cartItems", itemId);
+      await deleteDoc(itemDocRef);
+      console.log("Item deleted successfully:", itemId);
+    } catch (error) {
+      console.error("Error deleting item from cart:", error);
+    }
+  };
