@@ -4,26 +4,30 @@ import { Link } from "react-router-dom";
 
 export default function AddProducts() {
   const [name, setName] = useState("");
-  const [price, setprice] = useState("");
+  const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]); // Store categories
   const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
-    //fetch the items when the components mounts
+    // Fetch categories when the component mounts
     const fetchCategories = async () => {
       try {
         const res = await axios.get("http://127.0.0.1:8000/products");
-        setCategory(res.data);
+        setCategories(res.data.categories);//fetching the categories from the api endpoint that is provided
       } catch (error) {
-        console.log("Error fetchign categories", error);
+        console.log("Error fetching categories", error);
       }
     };
     fetchCategories();
   }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Create a new FormData object
+    const formData = new FormData();
     formData.append("name", name);
     formData.append("price", price);
     formData.append("image", image);
@@ -32,7 +36,7 @@ export default function AddProducts() {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/products",
+        "http://127.0.0.1:8000/products/",
         formData,
         {
           headers: {
@@ -42,11 +46,12 @@ export default function AddProducts() {
       );
 
       alert("Product created successfully: " + JSON.stringify(response.data));
+      // Optionally, reset the form or redirect
     } catch (error) {
+        console.log(error)
       console.error("Error creating product:", error);
       alert(
-        "Failed to create product: " + error.response?.data?.detail ||
-          error.message
+        "Failed to create product: " + error.response?.data?.detail || error.message
       );
     }
   };
@@ -56,7 +61,7 @@ export default function AddProducts() {
       <Link to=".." className="text-indigo-600 hover:underline">
         &larr;<span>Back to all products</span>
       </Link>
-      <div className="flex flex-col gap-2 items-center justify-start bg-lime-200 w-[80%] m-auto p-3 h-screen rounded-lg ">
+      <div className="flex flex-col gap-2 items-center justify-start bg-lime-200 w-[80%] m-auto mb-4 p-3 h-screen rounded-lg">
         <h1 className="font-bold text-6xl text-lime-400">Create Product</h1>
         <form
           className="flex flex-col align-start items-center max-w-[1000px] gap-2"
@@ -90,26 +95,24 @@ export default function AddProducts() {
                 type="file"
                 onChange={(e) => setImage(e.target.files[0])}
                 className="w-[350px] p-3 bg-transparent border-x-2 border-y-2 rounded-xl outline-none border-lime-400 cursor-pointer"
+                required
               />
             </label>
             <br />
 
-            
-             
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                required
-                className="w-[350px] p-3 bg-transparent border-x-2 border-y-2 rounded-xl outline-none border-lime-400"
-              >
-                <option value="">Select a category</option>
-                {/* {categories.map((cat) => (
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              required
+              className="w-[350px] p-3 bg-transparent border-x-2 border-y-2 rounded-xl outline-none border-lime-400"
+            >
+              <option value="">Select a category</option>
+              {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
-                    {cat.name}
+                  {cat.name}
                 </option>
-            ))} */}
-              </select>
-            
+              ))}
+            </select>
             <br />
 
             <label className="flex flex-col my-3">
