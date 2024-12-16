@@ -38,7 +38,7 @@ export function CartProvider({ children }) {
     }, [currentUser]); // Re-run when currentUser changes
 
     return (
-        <CartContext.Provider value={{ cart, addToCart }}>
+        <CartContext.Provider value={{ cart, addToCart,setCart }}>
             {children}
         </CartContext.Provider>
     );

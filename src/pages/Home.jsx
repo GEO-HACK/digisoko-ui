@@ -36,7 +36,7 @@ export default function Home() {
 
         <div className="flex gap-4 bg-lime-500">
           <div className="flex-1  ">
-            <img src={image1} alt=" About us image" className=" p-6" />
+            <img src={image1} alt=" About us image" className=" rounded-lg p-6" />
           </div>
           <div className="flex-1 flex flex-col items-center m-auto gap-4 text-gray-100">
             <h1 className="text-6xl font-bold ">About Us</h1>

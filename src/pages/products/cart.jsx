@@ -6,7 +6,7 @@ import { fetchCartItems, deleteCartItem } from "../../firebase/firebaseFunctions
 import { useAuth } from "../../context/AuthContext";
 
 export default function Cart() {
-  const { cart, setCart } = useCart(); // Ensure you can set cart state
+  const { cart, setCart } = useCart();
   const { currentUser } = useAuth(); // Get the current user from Auth context
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 

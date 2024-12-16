@@ -1,4 +1,4 @@
-import { doc, setDoc, collection , getDocs, QuerySnapshot } from "firebase/firestore"
+import { doc, setDoc, collection , getDocs, QuerySnapshot,deleteDoc } from "firebase/firestore"
 import { db } from "./firebase"//this is a s firestore instance
 
 
