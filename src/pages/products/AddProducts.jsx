@@ -8,14 +8,14 @@ export default function AddProducts() {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
   const [categories, setCategories] = useState([]); // Store categories
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(""); // Store category name
 
   useEffect(() => {
     // Fetch categories when the component mounts
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/products");
-        setCategories(res.data.categories);//fetching the categories from the api endpoint that is provided
+        const res = await axios.get("http://127.0.0.1:8000/products"); // Keeping the API endpoint as is
+        setCategories(res.data.categories); // Assuming categories are inside "categories"
       } catch (error) {
         console.log("Error fetching categories", error);
       }
@@ -32,7 +32,7 @@ export default function AddProducts() {
     formData.append("price", price);
     formData.append("image", image);
     formData.append("description", description);
-    formData.append("Type", selectedCategory);
+    formData.append("category", selectedCategory); // Send the category name here
 
     try {
       const response = await axios.post(
@@ -48,10 +48,10 @@ export default function AddProducts() {
       alert("Product created successfully: " + JSON.stringify(response.data));
       // Optionally, reset the form or redirect
     } catch (error) {
-        console.log(error)
       console.error("Error creating product:", error);
       alert(
-        "Failed to create product: " + error.response?.data?.detail || error.message
+        "Failed to create product: " +
+          (error.response?.data?.detail || error.message)
       );
     }
   };
@@ -62,7 +62,7 @@ export default function AddProducts() {
         &larr;<span>Back to all products</span>
       </Link>
       <div className="flex flex-col gap-2 items-center justify-start bg-lime-200 w-[80%] m-auto mb-4 p-3 h-screen rounded-lg">
-        <h1 className="font-bold text-6xl text-lime-400">Create Product</h1>
+        <h1 className="font-bold text-6xl text-lime-500">Create Product</h1>
         <form
           className="flex flex-col align-start items-center max-w-[1000px] gap-2"
           onSubmit={handleSubmit}
@@ -102,13 +102,13 @@ export default function AddProducts() {
 
             <select
               value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+              onChange={(e) => setSelectedCategory(e.target.value)} // Storing the category name here
               required
               className="w-[350px] p-3 bg-transparent border-x-2 border-y-2 rounded-xl outline-none border-lime-400"
             >
               <option value="">Select a category</option>
               {categories.map((cat) => (
-                <option key={cat.id} value={cat.id}>
+                <option key={cat.id} value={cat.name}> {/* Use category name for value */}
                   {cat.name}
                 </option>
               ))}
