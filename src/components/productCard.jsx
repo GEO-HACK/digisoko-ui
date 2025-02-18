@@ -33,7 +33,7 @@ export default function Card({ imageSrc, title, description, price, id }) {
           {" "}
           {description}
         </Link>
-        <p className="text-md font-semibold text-gray-900 ">${price}</p>
+        <p className="text-md font-semibold text-gray-900 ">KSH:{price}</p>
       </div>
       <button
         className="bg-blue-500 text-white text-xs px-2 py-2 mx-2 my-3 rounded-md transition-transform 

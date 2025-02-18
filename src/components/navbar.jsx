@@ -102,7 +102,7 @@ export default function Navbar({searchQuery, onSearchChange }) {
             </span>
           )}
         </NavLink>
-        <input
+        {/* <input
           type="text"
           placeholder="search products..."
           value={searchQuery}
@@ -112,7 +112,7 @@ export default function Navbar({searchQuery, onSearchChange }) {
               ? "border-transparent text-white bg-gray-700 placeholder-white focus:border-lime-300"
               : "border-gray-700 text-gray-700 bg-lime-300 focus:border-lime-300"
           }`}
-        />
+        /> */}
       </nav>
       <div className="relative">
         <button

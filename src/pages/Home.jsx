@@ -6,13 +6,12 @@ import HomeProd from "../components/homeprod";
 import image1 from "../assets/images/vision.jpg";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Home() {
-  const navigate= useNavigate()
-  const GoToAbout =()=> {
-    navigate('/about')
+  const navigate = useNavigate();
+  const GoToAbout = () => {
+    navigate("/about");
     window.scrollTo(0, 0);
-  }
+  };
   const [products, setProduct] = useState([]);
 
   useEffect(() => {
@@ -34,21 +33,33 @@ export default function Home() {
 
         <HomeProd />
 
-        <div className="flex gap-4 bg-lime-500">
-          <div className="flex-1  ">
-            <img src={image1} alt=" About us image" className=" rounded-lg p-6" />
+        <div className="flex flex-col lg:flex-row gap-4 bg-lime-500 p-4">
+          <div className="flex-1 flex justify-center">
+            <img
+              src={image1}
+              alt="About us image"
+              className="rounded-lg p-6 w-full max-w-md lg:max-w-none"
+            />
           </div>
-          <div className="flex-1 flex flex-col items-center m-auto gap-4 text-gray-100">
-            <h1 className="text-6xl font-bold ">About Us</h1>
-            <p className="text-md font-semibold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
-              tempore corrupti error fugit, dolore explicabo quae mollitia
-              temporibus cupiditate corporis aut. Molestias, numquam quia quam
-              obcaecati nesciunt eveniet porro possimus.
+          <div className="flex-1 flex flex-col items-center text-center lg:text-left justify-center gap-4 text-gray-100">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold">
+              About Us
+            </h1>
+            <p className="text-sm md:text-md font-semibold">
+              At Digisoko, we bridge the gap between local farmers and conscious
+              consumers by offering a platform that celebrates freshness,
+              sustainability, and convenience. Our passion lies in empowering
+              communities, promoting healthy living, and delivering
+              high-quality, homegrown produce right to your doorstep. Join us in
+              revolutionizing the way we connect with the land, one order at a
+              time.
             </p>
             <button
-            onClick={GoToAbout}
-             className="px-5 py-2 rounded-lg border border-lime-100 bg-lime-50 text-lime-400 font-bold hover:bg-transparent">Learn More</button>
+              onClick={GoToAbout}
+              className="px-5 py-2 rounded-lg border border-lime-100 bg-lime-50 text-lime-400 font-bold hover:bg-transparent"
+            >
+              Learn More
+            </button>
           </div>
         </div>
 

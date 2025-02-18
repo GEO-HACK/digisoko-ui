@@ -14,18 +14,18 @@ export default function Products() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchTerm, setSearchTerm] = useState(""); // State for search term
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch categories
+    // Fetch categories and products
     fetch("http://127.0.0.1:8000/products")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data.categories);
-        setProducts(data.products); // Initial load without filtering
+        setProducts(data.products);
       })
-
-      .catch((error) => {
+      .catch(() => {
         setError("Failed to fetch data. Please try again later.");
       });
   }, []);
@@ -39,7 +39,7 @@ export default function Products() {
       .then((data) => {
         setProducts(data.products);
       })
-      .catch((error) => {
+      .catch(() => {
         setError("Failed to fetch products. Please try again later.");
       });
   };
@@ -49,11 +49,10 @@ export default function Products() {
     setSelectedCategory(category);
     fetchProductsByCategory(category);
   };
-  const applyFilter = () => {
-    if (onFilter){
-      onFilter(handleCategoryChange)
-    }
-  }
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -71,34 +70,40 @@ export default function Products() {
           <div className="error-message">{error}</div>
         ) : (
           <>
-            <div className="filter-bar p-2 flex items-center space-x-2">
-              <label
-                htmlFor="category"
-                className="mr-2 font-semibold text-gray-700"
-              >
-                Category:
-              </label>
+            <div className="filter-bar p-2 flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+              {/* Category Filter */}
+              <div className="flex flex-col sm:flex-row items-center w-full sm:w-auto">
+                <label
+                  htmlFor="category"
+                  className="mb-1 sm:mb-0 mr-2 font-semibold text-gray-700 text-center sm:text-left"
+                >
+                  Category:
+                </label>
+                <select
+                  id="category"
+                  value={selectedCategory}
+                  onChange={handleCategoryChange}
+                  className="border rounded-lg p-2 w-full sm:w-auto focus:outline-none bg-white focus:border-blue-500 transition duration-150"
+                >
+                  <option value="">All</option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.name}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-              <select
-                id="category"
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                className="border rounded-lg p-1 focus:outline-none bg-white focus:border-blue-500 transition duration-150"
-              >
-                <option className="rounded-full" value="">All</option>
-                {categories.map((category) => (
-                  <option className="rounded-full" key={category.id} value={category.name}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-
-              {/* <button
-                onClick={applyFilter}
-                className="bg-blue-500 text-white rounded px-3 py-1 hover:bg-blue-600 transition duration-150"
-              >
-                Filter
-              </button> */}
+              {/* Search Bar */}
+              <div className="flex flex-col sm:flex-row items-center w-full sm:w-auto">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="border rounded-lg p-2 w-full sm:w-64 focus:outline-none focus:ring focus:ring-blue-500 transition duration-150"
+                />
+              </div>
             </div>
 
             <motion.div
@@ -109,8 +114,8 @@ export default function Products() {
               transition={pageTransition}
               className="flex items-start justify-start"
             >
-              <div className="grid grid-cols-1 gap-x-1 md:grid-cols-7 sm:grid-cols-2 mx-auto">
-                {products.map((product) => (
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-7 gap-x-1 gap-y-4 mx-auto">
+                {filteredProducts.map((product) => (
                   <div key={product.id} className="p-2 text-sm">
                     <Card
                       id={product.id}

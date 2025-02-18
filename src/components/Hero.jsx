@@ -43,11 +43,11 @@ export default function Hero() {
       {/* Analytics Section */}
       <div className="w-full bg-gray-100 py-6 flex items-center justify-evenly text-center">
         <div>
-          <h2 className="text-2xl font-bold text-lime-600">500+</h2>
+          <h2 className="text-2xl font-bold text-lime-600">50+</h2>
           <p className="text-sm text-gray-700">Products Available</p>
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-lime-600">1000+</h2>
+          <h2 className="text-2xl font-bold text-lime-600">100+</h2>
           <p className="text-sm text-gray-700">Happy Customers</p>
         </div>
         <div>
