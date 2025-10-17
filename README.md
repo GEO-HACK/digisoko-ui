@@ -5,7 +5,7 @@ Digisoko is a modern e-commerce web application designed to connect vendors and 
 ---
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Build Status](https://img.shields.io/badge/build-unknown-lightgrey.svg)](#) <!-- Replace with CI badge when available -->
+
 [![Deploy - Azure Static Web Apps](https://img.shields.io/badge/deploy-azure-blue.svg)](#) <!-- Replace with real badge -->
 
 Table of Contents
